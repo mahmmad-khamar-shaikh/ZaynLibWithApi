@@ -1,0 +1,18 @@
+
+<mat-card>
+  <mat-card-header>
+    Self book allocation !
+  </mat-card-header>
+  <mat-card-content>
+    <p> Initiating this operation will allocate selected Book for you.
+      <br>
+      <b>Please Note </b>:
+      <br> This action is irreversable from your end.
+      <br> However, you can contact Admin to deallocate seleced Book.
+    </p>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-raised-button (click)="cancelAssignBook()">Cancel</button>
+    <button mat-raised-button color="primary" (click)="assignBook()">Assign</button>
+  </mat-card-actions>
+</mat-card>

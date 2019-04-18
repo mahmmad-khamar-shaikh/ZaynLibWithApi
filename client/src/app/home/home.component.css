@@ -1,0 +1,12 @@
+
+  .home-footer {
+    overflow: hidden;
+    background-color: beige;
+    height: 50px;
+    position: fixed;
+    /* Set the navbar to fixed position */
+    bottom: 50;
+    /* Position the navbar at the top of the page */
+    width: 100%;
+    /* Full width */
+  }

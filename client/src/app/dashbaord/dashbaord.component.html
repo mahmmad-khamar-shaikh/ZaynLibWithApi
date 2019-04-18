@@ -1,0 +1,20 @@
+<div class="dashboad-header">
+  <span *ngIf="user" style="font-size: 18px; float:left; color:white;margin-right: 10px;margin-top: 10px">Welcome  {{user}}</span>
+  <i class="fa fa-sign-out" (click)="logout()" style="cursor: pointer;font-size: 18px; float:right; color:white;margin-right: 10px;margin-top: 10px;"></i>
+</div>
+<div class="container" style="margin-top: 50px;">
+  <!-- <div class="col-md-12" style="height:30px;padding-left: 0px;font-weight: bold">
+    Dashboard
+  </div> -->
+  <mat-tab-group>
+    <mat-tab label="Find Book">
+      <app-book-board-vanila></app-book-board-vanila>
+    </mat-tab>
+    <mat-tab label="Profile">
+      <app-user-profile></app-user-profile>
+    </mat-tab>
+    <mat-tab label="Manage" *ngIf="isAdmin">
+      <app-manage-dashboard></app-manage-dashboard>
+    </mat-tab>
+  </mat-tab-group>
+</div>

@@ -1,0 +1,15 @@
+
+.example-header-image {
+  background-image: url('../../assets/bookDetail.png');
+  background-size: cover;
+}
+.label-heading{
+  font-weight: bold;
+  margin: 5px;
+  font-size: 14px;
+}
+.label-text{
+  font-size: 14px;
+  font-family: 'Times New Roman', Times, serif;
+  margin: 5px;
+}
