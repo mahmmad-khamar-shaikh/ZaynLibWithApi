@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { AuthService } from '../shared/login/auth.service';
 import { ToastrService } from 'ngx-toastr';
 import { MessagingService } from '../shared/services/messaging.service';
@@ -15,20 +15,19 @@ export class DashbaordComponent implements OnInit {
   message: BehaviorSubject<any>;
   public user: string;
   constructor(private router: Router,
-    private _authService: AuthService,
+    private _activatedRoute: ActivatedRoute,
     private _toastrService: ToastrService,
     private _pushNotificationService: MessagingService
 
   ) { }
 
   ngOnInit() {
-    this.isAdmin = this._authService && this._authService.loggedInUser &&
-      this._authService.loggedInUser.role && this._authService.loggedInUser.role.admin;
-    this.user = this._authService.loggedInUser.Email;
-  
-    this.message = this._pushNotificationService.currentMessage;
-    this.message.subscribe(data => {
-      console.log('message received from serer ', data);
+
+    this._activatedRoute.params.subscribe((params) => {
+      console.log('params &&&&&&&&&&&&&&&&&&&&&&&', params);
+    });
+    this._activatedRoute.queryParams.subscribe((qParams) => {
+console.log('qparams', qParams);
     });
   }
   logout() {

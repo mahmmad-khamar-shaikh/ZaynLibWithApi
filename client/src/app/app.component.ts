@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { MessagingService } from './shared/services/messaging.service';
+import { AuthService } from './auth/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -9,5 +10,7 @@ import { MessagingService } from './shared/services/messaging.service';
 })
 export class AppComponent {
   title = 'In house Library';
-  constructor() { }
+  constructor(private auth: AuthService) {
+    auth.handleAuthentication();
+  }
 }

@@ -9,7 +9,7 @@ import { PageNotFoundComponent } from './shared/page-not-found/page-not-found.co
 import { AppRoutingModule } from './app-routing.module';
 import { AppMaterialModule } from './app-material.module';
 import { LoginComponent } from './shared/login/login.component';
-import { AuthService } from './shared/login/auth.service';
+import {AuthService} from './auth/auth.service';
 import { DashbaordComponent } from './dashbaord/dashbaord.component';
 import { ManageDashboardComponent } from './manage-dashboard/manage-dashboard.component';
 import { BookBoardComponent } from './book-board/book-board.component';
@@ -33,6 +33,7 @@ import { BookDetailComponent } from './book-detail/book-detail.component';
 import { ToastrModule } from 'ngx-toastr';
 import { CanActivateDashboardGuard } from './shared/guards/canActivateDashboard.guard';
 import { MessagingService } from './shared/services/messaging.service';
+import { CallbackComponent } from './callback/callback.component';
 
 @NgModule({
   entryComponents: [BookAllocationBottomSheetComponent],
@@ -49,7 +50,8 @@ import { MessagingService } from './shared/services/messaging.service';
     UserProfileComponent,
     BookAllocationBottomSheetComponent,
     PassRecoveryComponent,
-    BookDetailComponent
+    BookDetailComponent,
+    CallbackComponent
 
 
   ],

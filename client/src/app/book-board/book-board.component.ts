@@ -38,7 +38,6 @@ export class BookBoardComponent implements OnInit {
     direction: 'ltr'
   };
   constructor(private _bookBoardService: BookBoardService,
-    private _authService: AuthService,
     private bottomSheet: MatBottomSheet,
     private _bookAllocationEventServiceRef: EventService) { }
 

@@ -8,7 +8,7 @@ import { AuthService } from '../shared/login/auth.service';
 })
 export class UserProfileComponent implements OnInit {
 
-  constructor(private _authService: AuthService) { }
+  constructor() { }
   ngOnInit() {
   }
   /**

@@ -10,12 +10,10 @@ import { IRoles } from 'src/app/types/roles.interface';
 })
 export class ManageDashboardComponent implements OnInit {
   public roles: IRoles;
-  constructor(private _authService: AuthService) { }
+  constructor() { }
 
   ngOnInit() {
-    this.roles = this._authService
-      && this._authService.loggedInUser
-      && this._authService.loggedInUser.role;
+
   }
 
 }

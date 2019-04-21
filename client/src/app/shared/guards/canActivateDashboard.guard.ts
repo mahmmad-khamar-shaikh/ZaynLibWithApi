@@ -5,7 +5,7 @@ import { ToastrService } from 'ngx-toastr';
 
 @Injectable()
 export class CanActivateDashboardGuard implements CanActivate {
-  constructor(private _authService: AuthService, private _router: Router,
+  constructor( private _router: Router,
     private _toastrService: ToastrService) {
 
   }

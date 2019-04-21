@@ -9,6 +9,7 @@ import { PassRecoveryComponent } from './shared/pass-recovery/pass-recovery.comp
 import { BookBoardVanilaComponent } from './book-board/book-board-vanila.component';
 import { BookDetailComponent } from './book-detail/book-detail.component';
 import { CanActivateDashboardGuard } from './shared/guards/canActivateDashboard.guard';
+import { CallbackComponent } from './callback/callback.component';
 
 export const routes = [
     {
@@ -20,6 +21,7 @@ export const routes = [
 
         ]
     },
+    { path: 'callback', component: CallbackComponent },
     { 'path': 'dashboard', component: DashbaordComponent, canActivate: [CanActivateDashboardGuard] },
     { 'path': 'book/:id', component: BookDetailComponent },
     { 'path': '', redirectTo: 'home', pathMatch: 'full' },

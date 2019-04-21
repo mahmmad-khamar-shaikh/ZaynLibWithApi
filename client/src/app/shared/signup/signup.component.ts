@@ -15,7 +15,6 @@ export class SignupComponent implements OnInit {
   form: FormGroup;                    // {1}
   private formSubmitAttempt: boolean; // {2}
   constructor(private fb: FormBuilder,     // {3}
-    private authService: AuthService,
     private router: Router) { }
 
   ngOnInit() {

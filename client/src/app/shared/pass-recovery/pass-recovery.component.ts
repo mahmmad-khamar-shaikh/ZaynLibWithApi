@@ -14,7 +14,7 @@ export class PassRecoveryComponent implements OnInit {
   public customErrorMessage: string;
   public isError = false;
   constructor(private fb: FormBuilder,     // {3}
-    private authService: AuthService,
+
     private router: Router) { }
 
   ngOnInit() {
