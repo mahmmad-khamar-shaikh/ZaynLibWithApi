@@ -11,10 +11,12 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.16.4"
+    "express": "^4.16.4",
+    "mssql": "^5.1.0"
   },
   "devDependencies": {
     "@types/express": "^4.16.1",
+    "@types/mssql": "^4.0.13",
     "ts-loader": "^5.3.3",
     "typescript": "^3.4.3",
     "webpack": "^4.30.0",

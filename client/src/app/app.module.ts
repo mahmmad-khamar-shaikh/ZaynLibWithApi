@@ -9,7 +9,7 @@ import { PageNotFoundComponent } from './shared/page-not-found/page-not-found.co
 import { AppRoutingModule } from './app-routing.module';
 import { AppMaterialModule } from './app-material.module';
 import { LoginComponent } from './shared/login/login.component';
-import {AuthService} from './auth/auth.service';
+import { AuthService } from './auth/auth.service';
 import { DashbaordComponent } from './dashbaord/dashbaord.component';
 import { ManageDashboardComponent } from './manage-dashboard/manage-dashboard.component';
 import { BookBoardComponent } from './book-board/book-board.component';
@@ -25,7 +25,7 @@ import { BookAllocationBottomSheetComponent } from './book-board/book-allocation
 import { EventService } from './shared/services/event-emitter.service';
 import { PassRecoveryComponent } from './shared/pass-recovery/pass-recovery.component';
 import { StoreModule } from '@ngrx/store';
-import { reducers, metaReducers } from './store/reducer';
+import { reducer } from './store/library.reducer';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import { BookBoardVanilaComponent } from './book-board/book-board-vanila.component';
@@ -66,7 +66,8 @@ import { CallbackComponent } from './callback/callback.component';
     MatSlideToggleModule,
     AppMaterialModule,
     HttpClientModule,
-    StoreModule.forRoot(reducers, { metaReducers }),
+    StoreModule.forRoot(reducer),
+    StoreModule.forFeature('books', reducer),
     !environment.production ? StoreDevtoolsModule.instrument() : [],
     ToastrModule.forRoot()
   ],
