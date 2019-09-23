@@ -1,4 +1,5 @@
-﻿using BooksApi.Models;
+﻿using BooksApi.Extensions;
+using BooksApi.Models;
 using BooksApi.Service;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -21,14 +22,16 @@ namespace BooksApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.Configure<BookstoreDatabaseSettings>(Configuration.GetSection(nameof(BookstoreDatabaseSettings)));
-            services.AddSingleton<IBookstoreDatabaseSettings>(sp => sp.GetRequiredService<IOptions<BookstoreDatabaseSettings>>().Value);
-            services.AddSingleton<BookService>();
-
-
+            services.ConfigureCors();
+            services.ConfigureIISIntegration();
             services.AddMvc()
                  .AddJsonOptions(options => options.UseMemberCasing())
                 .SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            // These are Bussiness depedencies
+            services.Configure<BookstoreDatabaseSettings>(Configuration.GetSection(nameof(BookstoreDatabaseSettings)));
+            services.AddSingleton<IBookstoreDatabaseSettings>(sp => sp.GetRequiredService<IOptions<BookstoreDatabaseSettings>>().Value);
+            services.AddSingleton<BookService>();
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
