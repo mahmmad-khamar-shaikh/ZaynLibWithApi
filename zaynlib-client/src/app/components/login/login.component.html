@@ -1,0 +1,37 @@
+<div class="wrapper fadeInDown">
+  <div id="formContent">
+    <!-- Tabs Titles -->
+    <form>
+      <!-- Icon -->
+      <div class="fadeIn first">
+        <span class="fa fa-user"></span>
+      </div>
+
+      <!-- Login Form -->
+      <form [formGroup]="loginFormGroup">
+        <input
+          type="text"
+          id="login"
+          class="fadeIn second"
+          name="login"
+          placeholder="login"
+          formControlName="userName"
+        />
+        <input
+          type="text"
+          id="password"
+          class="fadeIn third"
+          name="login"
+          placeholder="password"
+          formControlName="password"
+        />
+        <input type="submit" class="fadeIn fourth" value="Log In" (click)="login()" />
+      </form>
+
+      <!-- Remind Passowrd -->
+      <div id="formFooter">
+        <a class="underlineHover" href="#">Forgot Password?</a>
+      </div>
+    </form>
+  </div>
+</div>

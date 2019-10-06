@@ -1,8 +1,0 @@
-.user-profile-container {
-    display: flex;
-    flex-direction: column;
-    padding-top: 10px;
-  }
-  .user-profile-container > * {
-    width: 100%;
-  }
