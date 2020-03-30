@@ -45,3 +45,9 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
+
+#WebAPI
+/webapi/.vs/
+/webapi/WebAPI/bin/
+/webapi/WebAPI/obj/
+

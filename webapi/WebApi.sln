@@ -3,7 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29215.179
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BooksApi", "WebApi\BooksApi.csproj", "{88DFBEEA-8D8C-4A46-8C5A-2A77DA68F800}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BooksApi", "WebApi\BooksApi.csproj", "{88DFBEEA-8D8C-4A46-8C5A-2A77DA68F800}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zaynlib.Data", "Zaynlib.Data\Zaynlib.Data.csproj", "{2FFCA865-7744-4A70-A87D-114E8226EE63}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zaynlib.Domain", "Zaynlib.Domain\Zaynlib.Domain.csproj", "{075B54AB-D107-4063-960C-E6BE7A22BD7C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZaynlibBookAPI", "ZaynlibBookAPI\ZaynlibBookAPI.csproj", "{D13D2239-F3C5-4316-8EF4-DCA343A6EE00}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +21,18 @@ Global
 		{88DFBEEA-8D8C-4A46-8C5A-2A77DA68F800}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{88DFBEEA-8D8C-4A46-8C5A-2A77DA68F800}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{88DFBEEA-8D8C-4A46-8C5A-2A77DA68F800}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2FFCA865-7744-4A70-A87D-114E8226EE63}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2FFCA865-7744-4A70-A87D-114E8226EE63}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2FFCA865-7744-4A70-A87D-114E8226EE63}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2FFCA865-7744-4A70-A87D-114E8226EE63}.Release|Any CPU.Build.0 = Release|Any CPU
+		{075B54AB-D107-4063-960C-E6BE7A22BD7C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{075B54AB-D107-4063-960C-E6BE7A22BD7C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{075B54AB-D107-4063-960C-E6BE7A22BD7C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{075B54AB-D107-4063-960C-E6BE7A22BD7C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D13D2239-F3C5-4316-8EF4-DCA343A6EE00}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D13D2239-F3C5-4316-8EF4-DCA343A6EE00}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D13D2239-F3C5-4316-8EF4-DCA343A6EE00}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D13D2239-F3C5-4316-8EF4-DCA343A6EE00}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

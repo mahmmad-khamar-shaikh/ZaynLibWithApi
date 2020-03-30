@@ -3,7 +3,6 @@ using BooksApi.Models;
 using BooksApi.Service;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Internal;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -26,9 +25,7 @@ namespace BooksApi
         {
             services.ConfigureCors();
             services.ConfigureIISIntegration();
-            services.AddMvc()
-                 .AddJsonOptions(options => options.UseMemberCasing())
-                .SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.AddMvc();
             services.AddSwaggerGen((c) =>
             {
                 c.SwaggerDoc("v1", new Info() { Title = "Book Store API ", Version ="1.0.0" });
