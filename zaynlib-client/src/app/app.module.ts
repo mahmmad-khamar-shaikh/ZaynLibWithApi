@@ -12,6 +12,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { SubscribersComponent } from './components/suscribers/subscribers.component';
+import { BookListComponent } from './components/book-list/book-list.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +21,9 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
     HomeComponent,
     LoginComponent,
     DashboardComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    SubscribersComponent,
+    BookListComponent
   ],
   imports: [
     BrowserModule,

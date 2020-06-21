@@ -4,6 +4,8 @@ import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { SubscribersComponent } from './components/suscribers/subscribers.component';
+import { BookListComponent } from './components/book-list/book-list.component';
 
 const routes: Routes = [
   {
@@ -15,7 +17,12 @@ const routes: Routes = [
     ]
   },
   // { path: 'callback', component: CallbackComponent },
-  { path: 'dashboard', component: DashboardComponent },
+  {
+    path: 'dashboard', component: DashboardComponent, children: [
+      { path: 'user', component: SubscribersComponent },
+      { path: '', component: BookListComponent }
+    ],
+  },
   // { 'path': 'book/:id', component: BookDetailComponent },
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: '**', component: PageNotFoundComponent }
