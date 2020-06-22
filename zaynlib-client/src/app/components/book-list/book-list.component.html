@@ -1,5 +1,5 @@
 <div class="container">
-    <p-table #dt [columns]="cols" [value]="bookList$ |async" [paginator]="true" [rows]="5">
+    <p-table #dt [columns]="cols" [value]="bookList$ |async" [scrollable]="true">
         <ng-template pTemplate="caption">
             <div style="text-align: right">
                 <i class="pi pi-search" style="margin:4px 4px 0 0"></i>
@@ -8,20 +8,25 @@
         </ng-template>
         <ng-template pTemplate="header" let-columns>
             <tr>
-                <th *ngFor="let col of columns">
-                    {{col.field}}
+                <th *ngFor="let col of columns" [ngStyle]="{'width': col.width }">
+                    {{col.header}}
                 </th>
             </tr>
         </ng-template>
         <ng-template pTemplate="body" let-rowData let-columns="columns">
             <tr [pSelectableRow]="rowData">
-                <td *ngFor="let col of columns">
-                    <div *ngIf="col.field==='Owner' else other_fields">
-                        {{rowData[col.field].Name}}
+                <td *ngFor="let col of columns" [ngStyle]="{'width': col.width }">
+                    <div [ngSwitch]="col.field">
+                        <div *ngSwitchCase="'Title'">
+                            {{rowData[col.field]}}
+                        </div>
+                        <div>
+                            <p-inputSwitch *ngSwitchCase="'IsAvailable'" [(ngModel)]="rowData[col.field]"></p-inputSwitch>
+                        </div>
+
+                        <button *ngSwitchDefault pButton type="button" icon="pi pi-info"></button>
                     </div>
-                    <ng-template #other_fields>
-                        {{rowData[col.field]}}
-                    </ng-template>
+
                 </td>
             </tr>
         </ng-template>

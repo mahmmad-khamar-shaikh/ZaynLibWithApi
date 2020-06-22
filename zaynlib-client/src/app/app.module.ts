@@ -17,6 +17,8 @@ import { BookListComponent } from './components/book-list/book-list.component';
 import { TableModule } from 'primeng/table';
 import { BookService } from './services/book.service';
 import { HttpClientModule } from '@angular/common/http';
+import { InputSwitchModule } from 'primeng/inputswitch';
+import {ButtonModule} from 'primeng/button';
 
 @NgModule({
   declarations: [
@@ -36,6 +38,8 @@ import { HttpClientModule } from '@angular/common/http';
     ReactiveFormsModule,
     TableModule,
     HttpClientModule,
+    InputSwitchModule,
+    ButtonModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [BookService],
