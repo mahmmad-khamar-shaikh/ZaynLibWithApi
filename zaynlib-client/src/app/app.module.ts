@@ -14,6 +14,9 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { SubscribersComponent } from './components/suscribers/subscribers.component';
 import { BookListComponent } from './components/book-list/book-list.component';
+import { TableModule } from 'primeng/table';
+import { BookService } from './services/book.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -31,9 +34,11 @@ import { BookListComponent } from './components/book-list/book-list.component';
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
+    TableModule,
+    HttpClientModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
-  providers: [],
+  providers: [BookService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
