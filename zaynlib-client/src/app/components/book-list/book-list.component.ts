@@ -16,8 +16,8 @@ export class BookListComponent implements OnInit {
   constructor(private bookService: BookService) {
     this.cols = [
       { field: 'Title', header: 'Title', width : '60%' },
-      { field: 'IsAvailable', header: 'Is Available', width : '20%' },
-      { field: 'Detail', header: 'Detail', width : '20%' }
+      { field: 'IsAvailable', header: 'Is Available', width : '22%' },
+      { field: 'Id', header: 'Detail', width : '18%' }
     ];
   }
 

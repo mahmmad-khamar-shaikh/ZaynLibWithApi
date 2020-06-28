@@ -6,6 +6,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { SubscribersComponent } from './components/suscribers/subscribers.component';
 import { BookListComponent } from './components/book-list/book-list.component';
+import { SubscriptionDetailComponent } from './components/subscription-detail/subscription-detail.component';
 
 const routes: Routes = [
   {
@@ -20,6 +21,7 @@ const routes: Routes = [
   {
     path: 'dashboard', component: DashboardComponent, children: [
       { path: 'user', component: SubscribersComponent },
+      { path: 'book/:id', component: SubscriptionDetailComponent },
       { path: '', component: BookListComponent }
     ],
   },

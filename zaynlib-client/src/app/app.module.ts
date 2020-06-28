@@ -19,6 +19,7 @@ import { BookService } from './services/book.service';
 import { HttpClientModule } from '@angular/common/http';
 import { InputSwitchModule } from 'primeng/inputswitch';
 import {ButtonModule} from 'primeng/button';
+import { SubscriptionDetailComponent } from './components/subscription-detail/subscription-detail.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import {ButtonModule} from 'primeng/button';
     DashboardComponent,
     PageNotFoundComponent,
     SubscribersComponent,
-    BookListComponent
+    BookListComponent,
+    SubscriptionDetailComponent
   ],
   imports: [
     BrowserModule,
