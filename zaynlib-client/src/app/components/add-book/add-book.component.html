@@ -1,0 +1,49 @@
+<div class="card" style="margin-top: 10px; ">
+    <div class="card-header">
+        Book Detail! {{bookForm.valid }}
+    </div>
+
+    <div class="card-body">
+        <form class="justify-content-center" [formGroup]="bookForm">
+            <div class="form-group row">
+                <label for="lblBookTitle" class="col-sm-2 col-form-label col-xs-1">Title</label>
+                <div class="col-sm-6 col-xs-4">
+                    <input type="text" class="form-control" formControlName="title" id="txtTitle" placeholder="Tile" [ngClass]="{'is-invalid' : (bookForm.get('title').touched || bookForm.get('title').dirty) && !bookForm.get('title').valid }">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="lblCategory" class="col-sm-2 col-form-label  col-xs-1">category</label>
+                <div class="col-sm-4 col-xs-2">
+                    <input type="text" class="form-control" id="txtCategory" formControlName="category" placeholder="Category">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="lblAuthor" class="col-sm-2 col-form-label  col-xs-1">Author</label>
+                <div class="col-sm-4 col-xs-2">
+                    <input type="text" class="form-control" formControlName="author" id="txtAuthor" placeholder="Author">
+                </div>
+            </div>
+            <div class="form-group row ">
+                <div class="col-sm-2 col-xs-1"></div>
+                <div class="col-sm-6 form-check col-xs-2">
+                    <div class="custom-control custom-switch">
+                        <input type="checkbox" class="custom-control-input" formControlName="isAvailable" id="customSwitch1">
+                        <label class="custom-control-label" for="customSwitch1">Is Available</label>
+                    </div>
+
+                </div>
+
+
+            </div>
+
+            <div class="form-group row">
+                <div class="col-sm-12 ">
+                    <button class="btn btn-primary btn-sm mr-1" type="submit" style="width:80px" [title]="bookForm.valid ? 'Save your entered data' : 'Disabled until the form data is valid'" [disabled]="!bookForm.valid" (click)="addBook()">Add
+          </button>
+                    <button type="submit" class="btn btn-info btn-sm mr-1">Update</button>
+                    <button type="reset" class="btn btn-secondary btn-sm mr-1">Cancel</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

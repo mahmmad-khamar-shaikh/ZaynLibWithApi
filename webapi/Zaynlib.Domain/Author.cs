@@ -6,11 +6,12 @@ using System.Text;
 
 namespace Zaynlib.Domain
 {
-    [Table("Subscriber")]
-    public class Subscriber
+    [Table("Author")]
+   public class Author
     {
         [Key]
         public Guid Id { get; set; }
+
         [Required]
         [MaxLength(150)]
         public string FirstName { get; set; }
@@ -19,9 +20,6 @@ namespace Zaynlib.Domain
         [MaxLength(150)]
         public string LastName { get; set; }
 
-        [Required]
-        [MaxLength(150)]
-        public string Email { get; set; }
-        public Subscription Subscription { get; set; }
+
     }
 }

@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnChanges } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoginService } from 'src/app/services';
+
 
 @Component({
   selector: 'app-login',
@@ -10,7 +11,8 @@ import { LoginService } from 'src/app/services';
 })
 export class LoginComponent implements OnInit {
   loginFormGroup: FormGroup;
-  constructor(private formBuilder: FormBuilder, private router: Router, private loginService: LoginService) { }
+  constructor(private formBuilder: FormBuilder, private router: Router, private loginService: LoginService) {
+  }
   ngOnInit() {
     this.loginFormGroup = this.formBuilder.group({
       userName: ['', [Validators.required]],
@@ -26,7 +28,6 @@ export class LoginComponent implements OnInit {
       id: 1
     };
     this.router.navigate(['/dashboard']);
-
   }
 
 }
