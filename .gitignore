@@ -54,4 +54,6 @@ Thumbs.db
 /webapi/ZaynlibBookAPI/obj/
 /webapi/Zaynlib.Data/obj/
 /webapi/Zaynlib.Domain/obj/
+/webapi/Zaynlib.Domain/bin/
+/webapi/Zaynlib.Data/bin/
 
