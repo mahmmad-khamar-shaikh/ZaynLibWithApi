@@ -8,11 +8,14 @@ using Zaynlib.Data;
 using Zaynlib.Domain;
 using ZaynlibBookAPI.Services;
 
-namespace ZaynlibBookAPI.Service
+namespace ZaynlibBookAPI.Services
 {
     public class BookRepository : IBookRepository
     {
         private readonly ZainlibBooksContext _context;
+
+        
+
         public BookRepository(ZainlibBooksContext context)
         {
             this._context = context;
@@ -49,9 +52,9 @@ namespace ZaynlibBookAPI.Service
             _context.Books.Remove(bookToRemove);
         }
 
-        public Task<bool> BookExists(Guid bookdId)
+        public async Task<bool> BookExists(Guid bookdId)
         {
-            return _context.Books.AnyAsync(book => book.Id == bookdId);
+            return await _context.Books.AnyAsync(book => book.Id == bookdId);
         }
 
         public async Task<int> SaveBookEntityAsync()

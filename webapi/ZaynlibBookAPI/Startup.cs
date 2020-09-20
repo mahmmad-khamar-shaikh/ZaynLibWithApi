@@ -6,7 +6,9 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
 
 using Zaynlib.Data;
-using ZaynlibBookAPI.Service;
+using ZaynlibBookAPI.Services;
+using AutoMapper;
+using System;
 
 namespace ZaynlibBookAPI
 {
@@ -25,7 +27,13 @@ namespace ZaynlibBookAPI
             services.AddControllers();
             services.AddDbContext<ZainlibBooksContext>(options =>
             options.UseSqlServer(Configuration.GetConnectionString("ZaynConnection")).EnableSensitiveDataLogging(false));
-            services.AddScoped<BookRepository>();
+
+            // Service injection
+            services.AddScoped<IBookRepository,BookRepository>();
+
+            // Automapper
+            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

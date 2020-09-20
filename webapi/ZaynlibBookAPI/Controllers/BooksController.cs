@@ -2,38 +2,44 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Zaynlib.Data;
 using Zaynlib.Domain;
-using ZaynlibBookAPI.Service;
+using ZaynlibBookAPI.Filters;
+using ZaynlibBookAPI.Services;
 
 namespace ZaynlibBookAPI.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/Books")]
     [ApiController]
     public class BooksController : ControllerBase
     {
-        private readonly ZainlibBooksContext _context;
-        private readonly BookRepository _bookService;
+        private readonly ZainlibBooksContext _boookContext;
+        private readonly IBookRepository _bookService;
+        private readonly IMapper _mapper;
 
-        public BooksController(ZainlibBooksContext context, BookRepository bookService)
+        public BooksController(ZainlibBooksContext context, IBookRepository bookService, IMapper mapper)
         {
-            _context = context;
-            _bookService = bookService;
+            _boookContext = context ?? throw new ArgumentNullException(nameof(bookService));
+            _bookService = bookService ?? throw new ArgumentNullException(nameof(bookService));
+            _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
+
         }
 
-        // GET: api/Books
         [HttpGet]
+        [BooksResultFilter]
         public async Task<IActionResult> GetBooks()
         {
             var bookList = await _bookService.GetBooksAsync();
             return Ok(bookList);
         }
 
-        // GET: api/Books/5
-        [HttpGet("{id}")]
+
+        [HttpGet("{id}", Name = "GetBook")]
+        [BookResultFilter]
         public async Task<ActionResult<Book>> GetBook(Guid id)
         {
             var book = await _bookService.GetBookAsync(id);
@@ -44,9 +50,6 @@ namespace ZaynlibBookAPI.Controllers
             return Ok(book);
         }
 
-        // PUT: api/Books/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for
-        // more details see https://aka.ms/RazorPagesCRUD.
         [HttpPut("{id}")]
         public async Task<IActionResult> PutBook(Guid id, Book book)
         {
@@ -55,7 +58,7 @@ namespace ZaynlibBookAPI.Controllers
                 return BadRequest();
             }
 
-            _context.Entry(book).State = EntityState.Modified;
+            _boookContext.Entry(book).State = EntityState.Modified;
 
             try
             {
@@ -63,7 +66,7 @@ namespace ZaynlibBookAPI.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (! await _bookService.BookExists(id))
+                if (!await _bookService.BookExists(id))
                 {
                     return NotFound();
                 }
@@ -76,30 +79,30 @@ namespace ZaynlibBookAPI.Controllers
             return NoContent();
         }
 
-     
+        [HttpPost]
+        [BookResultFilter] // either add filter here or add to GetBook Method.
+        public async Task<ActionResult<Book>> PostBook(Book book)
+        {
+            var bookEntity = _mapper.Map<Book>(book);
 
-        // POST: api/Books
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for
-        // more details see https://aka.ms/RazorPagesCRUD.
-        //[HttpPost]
-        //public  Task<ActionResult<Book>> PostBook(Book book)
-        //{
-        //    _bookService.CreateBook(book);
-        //    return CreatedAtAction("GetBook", new { id = book.Id }, book);
-        //}
+            _bookService.CreateBook(book);
+            await _bookService.SaveBookEntityAsync();
 
-        //// DELETE: api/Books/5
-        //[HttpDelete("{id}")]
-        //public async Task<ActionResult<Book>> DeleteBook(Guid id)
-        //{
-        //    var book = await _bookService.Get(id);
-        //    if (book == null)
-        //    {
-        //        return NotFound();
-        //    }
-        //    await _bookService.Remove(book);
-        //    return book;
-        //}
-      
+            return CreatedAtAction("GetBook", new { id = bookEntity.Id }, bookEntity);
+        }
+
+
+        [HttpDelete("{id}")]
+        public async Task<bool> DeleteBook(Guid id)
+        {
+            var book = await _bookService.GetBookAsync(id);
+            if (book == null)
+            {
+                throw new ArgumentNullException(nameof(id));
+            }
+            _bookService.RemoveBook(book);
+            return await _bookService.SaveBookEntityAsync() > 0;
+        }
+
     }
 }

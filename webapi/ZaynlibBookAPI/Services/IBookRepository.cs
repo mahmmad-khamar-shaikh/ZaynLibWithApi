@@ -14,6 +14,7 @@ namespace ZaynlibBookAPI.Services
         public void UpdateBook(Guid bookId, Book bookToUpdate);
         public void RemoveBook(Book bookToRemove);
         public Task<int> SaveBookEntityAsync();
+        public Task<bool> BookExists(Guid bookId);
 
     }
 }
