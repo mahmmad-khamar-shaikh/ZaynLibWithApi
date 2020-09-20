@@ -1,8 +1,0 @@
-D:\ZaynSys\ZaynLibMeanStack\webapi\Zaynlib.Domain\bin\Debug\netcoreapp3.1\Zaynlib.Domain.deps.json
-D:\ZaynSys\ZaynLibMeanStack\webapi\Zaynlib.Domain\bin\Debug\netcoreapp3.1\Zaynlib.Domain.dll
-D:\ZaynSys\ZaynLibMeanStack\webapi\Zaynlib.Domain\bin\Debug\netcoreapp3.1\Zaynlib.Domain.pdb
-D:\ZaynSys\ZaynLibMeanStack\webapi\Zaynlib.Domain\obj\Debug\netcoreapp3.1\Zaynlib.Domain.AssemblyInfoInputs.cache
-D:\ZaynSys\ZaynLibMeanStack\webapi\Zaynlib.Domain\obj\Debug\netcoreapp3.1\Zaynlib.Domain.AssemblyInfo.cs
-D:\ZaynSys\ZaynLibMeanStack\webapi\Zaynlib.Domain\obj\Debug\netcoreapp3.1\Zaynlib.Domain.dll
-D:\ZaynSys\ZaynLibMeanStack\webapi\Zaynlib.Domain\obj\Debug\netcoreapp3.1\Zaynlib.Domain.pdb
-D:\ZaynSys\ZaynLibMeanStack\WebApi\Zaynlib.Domain\obj\Debug\netcoreapp3.1\Zaynlib.Domain.csprojAssemblyReference.cache

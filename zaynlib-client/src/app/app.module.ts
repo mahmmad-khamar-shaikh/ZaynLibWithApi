@@ -13,6 +13,14 @@ import { CommonModule } from '@angular/common';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { AddBookComponent } from './components/add-book/add-book.component';
+import { SubscribersComponent } from './components/suscribers/subscribers.component';
+import { BookListComponent } from './components/book-list/book-list.component';
+import { TableModule } from 'primeng/table';
+import { BookService } from './services/book.service';
+import { HttpClientModule } from '@angular/common/http';
+import { InputSwitchModule } from 'primeng/inputswitch';
+import {ButtonModule} from 'primeng/button';
+import { SubscriptionDetailComponent } from './components/subscription-detail/subscription-detail.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +29,10 @@ import { AddBookComponent } from './components/add-book/add-book.component';
     LoginComponent,
     DashboardComponent,
     PageNotFoundComponent,
-    AddBookComponent
+    AddBookComponent,
+    SubscribersComponent,
+    BookListComponent,
+    SubscriptionDetailComponent
   ],
   imports: [
     BrowserModule,
@@ -29,9 +40,13 @@ import { AddBookComponent } from './components/add-book/add-book.component';
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
+    TableModule,
+    HttpClientModule,
+    InputSwitchModule,
+    ButtonModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
-  providers: [],
+  providers: [BookService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

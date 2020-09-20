@@ -5,6 +5,9 @@ import { LoginComponent } from './components/login/login.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { AddBookComponent } from './components/add-book/add-book.component';
+import { SubscribersComponent } from './components/suscribers/subscribers.component';
+import { BookListComponent } from './components/book-list/book-list.component';
+import { SubscriptionDetailComponent } from './components/subscription-detail/subscription-detail.component';
 
 const routes: Routes = [
   {
@@ -20,9 +23,11 @@ const routes: Routes = [
   {
     path: 'dashboard', component: DashboardComponent, children: [
       { path: 'book', component: AddBookComponent },
-    ]
+      { path: 'user', component: SubscribersComponent },
+      { path: 'book/:id', component: SubscriptionDetailComponent },
+      { path: '', component: BookListComponent }
+    ],
   },
-
   // { 'path': 'book/:id', component: BookDetailComponent },
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: '**', component: PageNotFoundComponent }
