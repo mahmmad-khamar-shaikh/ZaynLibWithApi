@@ -22,7 +22,7 @@ namespace ZaynlibBookAPI.Services
         }
 
         public async Task<IEnumerable<Book>> GetBooksAsync()
-            => await _context.Books.ToListAsync();
+            => await _context.Books.Include(auth=>auth.Author).ToListAsync();
 
         public async Task<Book> GetBookAsync(Guid id) =>
             await _context.Books.Where(book => book.Id == id).FirstOrDefaultAsync();
