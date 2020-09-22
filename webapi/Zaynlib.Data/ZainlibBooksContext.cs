@@ -4,11 +4,14 @@ using Zaynlib.Domain;
 
 namespace Zaynlib.Data
 {
-    public class ZainlibBooksContext : DbContext
+    public class ZainlibBooksStoreContext : DbContext
     {
         public DbSet<Book> Books { get; set; }
         public DbSet<Subscriber> Subscribers { get; set; }
-        public ZainlibBooksContext(DbContextOptions<ZainlibBooksContext> options) :base(options)
+        public DbSet<Author> Authors { get; set; }
+        public DbSet<Subscription> Subscriptions { get; set; }
+
+        public ZainlibBooksStoreContext(DbContextOptions<ZainlibBooksStoreContext> options) : base(options)
         {
 
         }
@@ -19,4 +22,3 @@ namespace Zaynlib.Data
         }
     }
 }
-    

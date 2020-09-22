@@ -20,6 +20,7 @@ namespace Zaynlib.Domain
         [MaxLength(150)]
         public string LastName { get; set; }
 
+        public IEnumerable<Book> Books { get; set; }
 
     }
 }

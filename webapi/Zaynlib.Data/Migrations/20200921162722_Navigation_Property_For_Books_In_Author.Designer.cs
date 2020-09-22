@@ -10,8 +10,8 @@ using Zaynlib.Data;
 namespace Zaynlib.Data.Migrations
 {
     [DbContext(typeof(ZainlibBooksStoreContext))]
-    [Migration("20200919133829_Initial_Migration")]
-    partial class Initial_Migration
+    [Migration("20200921162722_Navigation_Property_For_Books_In_Author")]
+    partial class Navigation_Property_For_Books_In_Author
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -122,7 +122,7 @@ namespace Zaynlib.Data.Migrations
             modelBuilder.Entity("Zaynlib.Domain.Book", b =>
                 {
                     b.HasOne("Zaynlib.Domain.Author", "Author")
-                        .WithMany()
+                        .WithMany("Books")
                         .HasForeignKey("AuthorId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();

@@ -17,11 +17,11 @@ namespace ZaynlibBookAPI.Controllers
     [ApiController]
     public class BooksController : ControllerBase
     {
-        private readonly ZainlibBooksContext _boookContext;
+        private readonly ZainlibBooksStoreContext _boookContext;
         private readonly IBookRepository _bookService;
         private readonly IMapper _mapper;
 
-        public BooksController(ZainlibBooksContext context, IBookRepository bookService, IMapper mapper)
+        public BooksController(ZainlibBooksStoreContext context, IBookRepository bookService, IMapper mapper)
         {
             _boookContext = context ?? throw new ArgumentNullException(nameof(bookService));
             _bookService = bookService ?? throw new ArgumentNullException(nameof(bookService));

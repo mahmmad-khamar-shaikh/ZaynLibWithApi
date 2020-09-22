@@ -12,11 +12,9 @@ namespace ZaynlibBookAPI.Services
 {
     public class BookRepository : IBookRepository
     {
-        private readonly ZainlibBooksContext _context;
+        private readonly ZainlibBooksStoreContext _context;
 
-        
-
-        public BookRepository(ZainlibBooksContext context)
+        public BookRepository(ZainlibBooksStoreContext context)
         {
             this._context = context;
         }
@@ -25,7 +23,7 @@ namespace ZaynlibBookAPI.Services
             => await _context.Books.Include(auth=>auth.Author).ToListAsync();
 
         public async Task<Book> GetBookAsync(Guid id) =>
-            await _context.Books.Where(book => book.Id == id).FirstOrDefaultAsync();
+            await _context.Books.Include(book=> book.Author).Where(book => book.Id == id).FirstOrDefaultAsync();
 
         public void CreateBook(Book book)
         {

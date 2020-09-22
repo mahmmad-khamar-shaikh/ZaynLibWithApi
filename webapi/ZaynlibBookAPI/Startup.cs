@@ -26,7 +26,7 @@ namespace ZaynlibBookAPI
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-            services.AddDbContext<ZainlibBooksContext>(options =>
+            services.AddDbContext<ZainlibBooksStoreContext>(options =>
             options.UseSqlServer(Configuration.GetConnectionString("ZaynConnection")).EnableSensitiveDataLogging(false));
 
             // Service injection

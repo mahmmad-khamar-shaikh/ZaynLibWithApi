@@ -8,7 +8,7 @@ using Zaynlib.Data;
 
 namespace Zaynlib.Data.Migrations
 {
-    [DbContext(typeof(ZainlibBooksContext))]
+    [DbContext(typeof(ZainlibBooksStoreContext))]
     partial class ZainlibBooksContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
@@ -120,7 +120,7 @@ namespace Zaynlib.Data.Migrations
             modelBuilder.Entity("Zaynlib.Domain.Book", b =>
                 {
                     b.HasOne("Zaynlib.Domain.Author", "Author")
-                        .WithMany()
+                        .WithMany("Books")
                         .HasForeignKey("AuthorId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
