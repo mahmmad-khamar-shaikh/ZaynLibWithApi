@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Zaynlib.Data;
+using Zaynlib.Domain;
 using ZaynlibBookAPI.Services;
 
 namespace ZaynlibBookAPI.Controllers
@@ -34,6 +35,17 @@ namespace ZaynlibBookAPI.Controllers
                 return NotFound();
             }
             return Ok(authorList);
+        }
+
+        [HttpGet]
+        public async Task<ActionResult<Author>> GetAuthor(Guid id)
+        {
+            var author = await _authorRepository.GetAuthorAsync(id);
+            if(null == author)
+            {
+                return NotFound();
+            }
+            return Ok(author);
         }
     }
 }
