@@ -6,6 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Zaynlib.Data;
 using Zaynlib.Domain;
+using ZaynlibBookAPI.Filters;
 using ZaynlibBookAPI.Services;
 
 namespace ZaynlibBookAPI.Controllers
@@ -38,6 +39,7 @@ namespace ZaynlibBookAPI.Controllers
         }
 
         [HttpGet]
+        [AuthorResultFilterAttribute]
         public async Task<ActionResult<Author>> GetAuthor(Guid id)
         {
             var author = await _authorRepository.GetAuthorAsync(id);
