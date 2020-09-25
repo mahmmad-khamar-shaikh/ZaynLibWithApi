@@ -31,6 +31,7 @@ namespace ZaynlibBookAPI
 
             // Service injection
             services.AddScoped<IBookRepository,BookRepository>();
+            services.AddScoped<IAuthorRepository, AuthorRepository>();
 
             // Automapper
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());

@@ -28,6 +28,7 @@ namespace ZaynlibBookAPI.Controllers
         }
 
         [HttpGet]
+        [AuthorsResultFilter]
         public async Task<IActionResult> GetAuthors()
         {
             var authorList = await _authorRepository.GetAuthorsAsync();
@@ -38,8 +39,7 @@ namespace ZaynlibBookAPI.Controllers
             return Ok(authorList);
         }
 
-        [HttpGet]
-        [AuthorResultFilterAttribute]
+        [HttpGet("{id}")]
         public async Task<ActionResult<Author>> GetAuthor(Guid id)
         {
             var author = await _authorRepository.GetAuthorAsync(id);
