@@ -61,5 +61,22 @@ namespace ZaynlibBookAPI.Controllers
             var recentlyAddedAuthor = await _authorRepository.GetAuthorAsync(authorToAdd.Id);
             return CreatedAtAction("GetAuthor", new { id = recentlyAddedAuthor.Id }, recentlyAddedAuthor);
         }
+
+        [HttpDelete("{id}")]
+        public async Task<bool> DeleteAuthor(Guid id)
+        {
+            if(id== null)
+            {
+                throw new ArgumentNullException(nameof(id));
+            }
+            var authorToDelete = await _authorRepository.GetAuthorAsync(id);
+            if(authorToDelete == null)
+            {
+                throw new ArgumentNullException(nameof(id));
+            }
+
+            _authorRepository.RemoveAuthor(authorToDelete);
+            return await _authorRepository.SaveAuthorAsync() > 0;
+        }
     }
 }
