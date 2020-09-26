@@ -40,6 +40,7 @@ namespace ZaynlibBookAPI.Controllers
         }
 
         [HttpGet("{id}")]
+        [AuthorResultFilter]
         public async Task<ActionResult<Author>> GetAuthor(Guid id)
         {
             var author = await _authorRepository.GetAuthorAsync(id);
