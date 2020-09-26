@@ -23,7 +23,7 @@ namespace ZaynlibBookAPI.Filters
             }
 
             var mapper = context.HttpContext.RequestServices.GetRequiredService<IMapper>();
-            resultFromAction.Value = mapper.Map<Models.Book>(resultFromAction.Value);
+            resultFromAction.Value = mapper.Map<Models.BookDTO>(resultFromAction.Value);
             await next();
         }
     }

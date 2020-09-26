@@ -10,7 +10,7 @@ namespace ZaynlibBookAPI.Profiles
     {
         public AuthorProfile()
         {
-            CreateMap<Zaynlib.Domain.Author, Models.Author>()
+            CreateMap<Zaynlib.Domain.Author, Models.AuthorDTO>()
                    .ForMember(outputEntity =>
                    outputEntity.BookList, dbAuthorEntity => dbAuthorEntity.MapFrom(src => src.Books.Select(b => b.Title).ToList()));
 

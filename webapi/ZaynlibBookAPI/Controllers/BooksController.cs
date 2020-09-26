@@ -9,6 +9,7 @@ using Microsoft.EntityFrameworkCore;
 using Zaynlib.Data;
 using Zaynlib.Domain;
 using ZaynlibBookAPI.Filters;
+using ZaynlibBookAPI.Models;
 using ZaynlibBookAPI.Services;
 
 namespace ZaynlibBookAPI.Controllers
@@ -82,13 +83,12 @@ namespace ZaynlibBookAPI.Controllers
 
         [HttpPost]
         [BookResultFilter] // either add filter here or add to GetBook Method.
-        public async Task<ActionResult<Book>> PostBook(Book book)
+        public async Task<ActionResult<Book>> PostBook(BookCreationDTO book)
         {
             var bookEntity = _mapper.Map<Book>(book);
 
-            _bookService.CreateBook(book);
+            _bookService.CreateBook(bookEntity);
             await _bookService.SaveBookEntityAsync();
-
             return CreatedAtAction("GetBook", new { id = bookEntity.Id }, bookEntity);
         }
 

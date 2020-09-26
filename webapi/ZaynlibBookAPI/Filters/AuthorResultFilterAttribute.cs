@@ -22,8 +22,8 @@ namespace ZaynlibBookAPI.Filters
                 return;
             }
             var mapper = context.HttpContext.RequestServices.GetRequiredService<IMapper>();
-            resultFromAction.Value = mapper.Map<Models.Author>(resultFromAction.Value);
+            resultFromAction.Value = mapper.Map<Models.AuthorDTO>(resultFromAction.Value);
             await next();
         }
     }
-}
+}   

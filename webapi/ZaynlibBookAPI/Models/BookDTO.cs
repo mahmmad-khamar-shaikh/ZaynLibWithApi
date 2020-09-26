@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace ZaynlibBookAPI.Models
 {
-    public class Book
+    public class BookDTO
     {
         public Guid Id { get; set; }
         public string Title { get; set; }
