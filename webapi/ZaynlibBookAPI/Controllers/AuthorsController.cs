@@ -39,7 +39,7 @@ namespace ZaynlibBookAPI.Controllers
             return Ok(authorList);
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("{id}", Name ="GetAuthor")]
         [AuthorResultFilter]
         public async Task<ActionResult<Author>> GetAuthor(Guid id)
         {
@@ -49,6 +49,17 @@ namespace ZaynlibBookAPI.Controllers
                 return NotFound();
             }
             return Ok(author);
+        }
+
+        [HttpPost]
+        [AuthorResultFilter]
+       public async Task<ActionResult<Author>> AddBook(Author authorToAdd)
+        {
+            _authorRepository.CreateAuthor(authorToAdd);
+            await _authorRepository.SaveAuthorAsync();
+
+            var recentlyAddedAuthor = await _authorRepository.GetAuthorAsync(authorToAdd.Id);
+            return CreatedAtAction("GetAuthor", new { id = recentlyAddedAuthor.Id }, recentlyAddedAuthor);
         }
     }
 }

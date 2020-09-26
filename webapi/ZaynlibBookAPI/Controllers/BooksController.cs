@@ -89,7 +89,10 @@ namespace ZaynlibBookAPI.Controllers
 
             _bookService.CreateBook(bookEntity);
             await _bookService.SaveBookEntityAsync();
-            return CreatedAtAction("GetBook", new { id = bookEntity.Id }, bookEntity);
+            // Fetch Fresh Book.
+            var freshBook = await _bookService.GetBookAsync(bookEntity.Id);
+
+            return CreatedAtAction("GetBook", new { id = freshBook.Id }, freshBook);
         }
 
 
