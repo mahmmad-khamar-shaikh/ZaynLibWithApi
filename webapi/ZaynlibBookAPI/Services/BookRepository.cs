@@ -22,6 +22,12 @@ namespace ZaynlibBookAPI.Services
         public async Task<IEnumerable<Book>> GetBooksAsync()
             => await _context.Books.Include(auth=>auth.Author).ToListAsync();
 
+
+        public async Task<IEnumerable<Book>> GetBooksByIdsAsync(IEnumerable<Guid> Ids)
+        {
+            return await _context.Books.Include(author => author.Author).Where(book => Ids.Contains(book.Id)).ToListAsync();
+        }
+
         public async Task<Book> GetBookAsync(Guid id) =>
             await _context.Books.Include(book=> book.Author).Where(book => book.Id == id).FirstOrDefaultAsync();
 
@@ -59,5 +65,7 @@ namespace ZaynlibBookAPI.Services
         {
             return await _context.SaveChangesAsync();
         }
+
+       
     }
 }

@@ -9,6 +9,7 @@ using Microsoft.EntityFrameworkCore;
 using Zaynlib.Data;
 using Zaynlib.Domain;
 using ZaynlibBookAPI.Filters;
+using ZaynlibBookAPI.ModelBinder;
 using ZaynlibBookAPI.Models;
 using ZaynlibBookAPI.Services;
 
@@ -39,6 +40,16 @@ namespace ZaynlibBookAPI.Controllers
             return Ok(bookList);
         }
 
+        [HttpGet("({Ids})")] 
+        public async Task<ActionResult<Book>> GetBooksByIds([ModelBinder(BinderType = typeof(ArrayModelBinder))] IEnumerable<Guid> Ids)
+        {
+            var bookEntities = await _bookService.GetBooksByIdsAsync(Ids);
+            if(null == bookEntities)
+            {
+                return NotFound();
+            }
+            return Ok(bookEntities);
+        }
 
         [HttpGet("{id}", Name = "GetBook")]
         [BookResultFilter]
