@@ -40,7 +40,8 @@ namespace ZaynlibBookAPI.Controllers
             return Ok(bookList);
         }
 
-        [HttpGet("({Ids})")] 
+        [HttpGet("GetBooksByIds/({Ids})")]
+        [BooksResultFilter]
         public async Task<ActionResult<Book>> GetBooksByIds([ModelBinder(BinderType = typeof(ArrayModelBinder))] IEnumerable<Guid> Ids)
         {
             var bookEntities = await _bookService.GetBooksByIdsAsync(Ids);
