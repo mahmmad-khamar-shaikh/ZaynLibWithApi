@@ -37,6 +37,11 @@ namespace ZaynlibBookAPI.Services
             return await _context.Authors.Include(author => author.Books).ToListAsync();
         }
 
+        public async Task<IEnumerable<Author>> GetAuthorsByIdsAsync(IEnumerable<Guid> Ids)
+        {
+            return await _context.Authors.Include(b => b.Books).Where(a => Ids.Contains(a.Id)).ToListAsync();
+        }
+
         public void RemoveAuthor(Author authorToRemove)
         {
             _context.Authors.Remove(authorToRemove);

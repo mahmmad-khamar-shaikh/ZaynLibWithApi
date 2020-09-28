@@ -9,6 +9,7 @@ namespace ZaynlibBookAPI.Services
     public interface IAuthorRepository
     {
         public Task<IEnumerable<Author>> GetAuthorsAsync();
+        public Task<IEnumerable<Author>> GetAuthorsByIdsAsync(IEnumerable<Guid> Ids);
         public Task<Author> GetAuthorAsync(Guid authorId);
         public void CreateAuthor(Author author);
         public void RemoveAuthor(Author authorToRemove);

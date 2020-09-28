@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Zaynlib.Data;
 using Zaynlib.Domain;
 using ZaynlibBookAPI.Filters;
+using ZaynlibBookAPI.Models;
 using ZaynlibBookAPI.Services;
 
 namespace ZaynlibBookAPI.Controllers
@@ -39,6 +40,15 @@ namespace ZaynlibBookAPI.Controllers
             return Ok(authorList);
         }
 
+        //public async Task<ActionResult<AuthorDTO>> GetAuthorsByIds(IEnumerable<Guid> Ids)
+        //{
+        //    if(null == Ids )
+        //    {
+        //        throw new ArgumentNullException(nameof(Ids));
+        //    }
+        //    var authorList = await _authorRepository.GetAuthorAsync(Ids);
+        //}
+
         [HttpGet("{id}", Name ="GetAuthor")]
         [AuthorResultFilter]
         public async Task<ActionResult<Author>> GetAuthor(Guid id)
@@ -53,7 +63,7 @@ namespace ZaynlibBookAPI.Controllers
 
         [HttpPost]
         [AuthorResultFilter]
-       public async Task<ActionResult<Author>> AddBook(Author authorToAdd)
+       public async Task<ActionResult<Author>> AddAuthor(Author authorToAdd)
         {
             _authorRepository.CreateAuthor(authorToAdd);
             await _authorRepository.SaveAuthorAsync();
@@ -61,6 +71,8 @@ namespace ZaynlibBookAPI.Controllers
             var recentlyAddedAuthor = await _authorRepository.GetAuthorAsync(authorToAdd.Id);
             return CreatedAtAction("GetAuthor", new { id = recentlyAddedAuthor.Id }, recentlyAddedAuthor);
         }
+
+        
 
         [HttpDelete("{id}")]
         public async Task<bool> DeleteAuthor(Guid id)
