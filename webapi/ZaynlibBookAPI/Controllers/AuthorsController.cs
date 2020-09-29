@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Zaynlib.Data;
 using Zaynlib.Domain;
 using ZaynlibBookAPI.Filters;
+using ZaynlibBookAPI.ModelBinder;
 using ZaynlibBookAPI.Models;
 using ZaynlibBookAPI.Services;
 
@@ -40,21 +41,24 @@ namespace ZaynlibBookAPI.Controllers
             return Ok(authorList);
         }
 
-        //public async Task<ActionResult<AuthorDTO>> GetAuthorsByIds(IEnumerable<Guid> Ids)
-        //{
-        //    if(null == Ids )
-        //    {
-        //        throw new ArgumentNullException(nameof(Ids));
-        //    }
-        //    var authorList = await _authorRepository.GetAuthorAsync(Ids);
-        //}
+        [HttpGet("getAuthorsCollection/({ids})")]
+        [AuthorsResultFilter]
+        public async Task<ActionResult<AuthorDTO>> GetAuthorsByIds([ModelBinder(BinderType =typeof(ArrayModelBinder))] IEnumerable<Guid> Ids)
+        {
+            if (null == Ids)
+            {
+                throw new ArgumentNullException(nameof(Ids));
+            }
+            var authorList = await _authorRepository.GetAuthorsByIdsAsync(Ids);
+            return Ok(authorList);
+        }
 
-        [HttpGet("{id}", Name ="GetAuthor")]
+        [HttpGet("{id}", Name = "GetAuthor")]
         [AuthorResultFilter]
         public async Task<ActionResult<Author>> GetAuthor(Guid id)
         {
             var author = await _authorRepository.GetAuthorAsync(id);
-            if(null == author)
+            if (null == author)
             {
                 return NotFound();
             }
@@ -63,7 +67,7 @@ namespace ZaynlibBookAPI.Controllers
 
         [HttpPost]
         [AuthorResultFilter]
-       public async Task<ActionResult<Author>> AddAuthor(Author authorToAdd)
+        public async Task<ActionResult<Author>> AddAuthor(Author authorToAdd)
         {
             _authorRepository.CreateAuthor(authorToAdd);
             await _authorRepository.SaveAuthorAsync();
@@ -72,17 +76,17 @@ namespace ZaynlibBookAPI.Controllers
             return CreatedAtAction("GetAuthor", new { id = recentlyAddedAuthor.Id }, recentlyAddedAuthor);
         }
 
-        
+
 
         [HttpDelete("{id}")]
         public async Task<bool> DeleteAuthor(Guid id)
         {
-            if(id== null)
+            if (id == null)
             {
                 throw new ArgumentNullException(nameof(id));
             }
             var authorToDelete = await _authorRepository.GetAuthorAsync(id);
-            if(authorToDelete == null)
+            if (authorToDelete == null)
             {
                 throw new ArgumentNullException(nameof(id));
             }
