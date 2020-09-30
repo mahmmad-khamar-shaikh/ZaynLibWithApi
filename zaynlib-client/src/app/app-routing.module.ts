@@ -22,7 +22,7 @@ const routes: Routes = [
   // { path: 'callback', component: CallbackComponent },
   {
     path: 'dashboard', component: DashboardComponent, children: [
-      { path: 'book', component: AddBookComponent },
+      { path: 'addbook', component: AddBookComponent },
       { path: 'user', component: SubscribersComponent },
       { path: 'book/:id', component: SubscriptionDetailComponent },
       { path: '', component: BookListComponent }
