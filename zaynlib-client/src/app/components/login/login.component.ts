@@ -11,14 +11,28 @@ import { LoginService } from 'src/app/services';
 })
 export class LoginComponent implements OnInit {
   loginFormGroup: FormGroup;
-  constructor(private formBuilder: FormBuilder, private router: Router, private loginService: LoginService) {
+  public isError = false;
+  public customErrorMessage: string;
+  form: FormGroup;                    // {1}
+  private formSubmitAttempt: boolean; // {2}
+
+  constructor(
+    private formBuilder: FormBuilder,
+    private router: Router,
+    private loginService: LoginService) {
   }
   ngOnInit() {
-    this.loginFormGroup = this.formBuilder.group({
-      userName: ['', [Validators.required]],
-      password: ['', [Validators.required]]
+    this.form = this.formBuilder.group({     // {5}
+      userName: ['', Validators.required],
+      password: ['', Validators.required]
     });
 
+  }
+  isFieldInvalid(field: string) { // {6}
+    return (
+      (!this.form.get(field).valid && this.form.get(field).touched) ||
+      (this.form.get(field).untouched && this.formSubmitAttempt)
+    );
   }
   login() {
     console.log(this.loginFormGroup.get('userName').value);
@@ -28,6 +42,9 @@ export class LoginComponent implements OnInit {
       id: 1
     };
     this.router.navigate(['/dashboard']);
+  }
+  onSubmit() {
+    // To be Implemented
   }
 
 }

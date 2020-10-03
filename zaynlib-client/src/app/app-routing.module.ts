@@ -8,14 +8,15 @@ import { AddBookComponent } from './components/add-book/add-book.component';
 import { SubscribersComponent } from './components/suscribers/subscribers.component';
 import { BookListComponent } from './components/book-list/book-list.component';
 import { SubscriptionDetailComponent } from './components/subscription-detail/subscription-detail.component';
+import { SignupComponent } from './components/signup/signup.component';
+import { PassRecoveryComponent } from './components/pass-recovery/pass-recovery.component';
 
 const routes: Routes = [
   {
     path: 'home', component: HomeComponent, children: [
       { path: 'login', component: LoginComponent },
-
-      // { 'path': 'signup', component: SignupComponent },
-      // { 'path': 'password', component: PassRecoveryComponent },
+      { path: 'signup', component: SignupComponent },
+      { path: 'password', component: PassRecoveryComponent },
       { path: '', component: LoginComponent }
     ]
   },

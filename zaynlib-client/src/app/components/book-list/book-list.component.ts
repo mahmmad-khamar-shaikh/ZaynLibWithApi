@@ -15,9 +15,9 @@ export class BookListComponent implements OnInit {
 
   constructor(private bookService: BookService) {
     this.cols = [
-      { field: 'Title', header: 'Title', width : '60%' },
-      { field: 'IsAvailable', header: 'Is Available', width : '22%' },
-      { field: 'Id', header: 'Detail', width : '18%' }
+      { field: 'Title', header: 'Title', width : '63%' },
+      { field: 'IsAvailable', header: 'Available', width : '22%' },
+      { field: 'Id', header: 'Detail', width : '16%' }
     ];
   }
 

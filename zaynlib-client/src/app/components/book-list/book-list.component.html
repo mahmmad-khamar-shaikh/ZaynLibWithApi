@@ -24,7 +24,7 @@
                             <p-inputSwitch *ngSwitchCase="'IsAvailable'" [(ngModel)]="rowData[col.field]"></p-inputSwitch>
                         </div>
 
-                        <button [routerLink]="['/dashboard/book',rowData[col.field]]" *ngSwitchDefault pButton type="button" icon="pi pi-info"></button>
+                        <button [routerLink]="['/dashboard/book',rowData[col.field]]" *ngSwitchDefault pButton type="button" class="btn btn-outline-info"></button>
                     </div>
 
                 </td>

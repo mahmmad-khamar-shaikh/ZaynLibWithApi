@@ -21,6 +21,10 @@ import { HttpClientModule } from '@angular/common/http';
 import { InputSwitchModule } from 'primeng/inputswitch';
 import {ButtonModule} from 'primeng/button';
 import { SubscriptionDetailComponent } from './components/subscription-detail/subscription-detail.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AppMaterialModule } from './app-material.module';
+import { SignupComponent } from './components/signup/signup.component';
+import { PassRecoveryComponent } from './components/pass-recovery/pass-recovery.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +36,10 @@ import { SubscriptionDetailComponent } from './components/subscription-detail/su
     AddBookComponent,
     SubscribersComponent,
     BookListComponent,
-    SubscriptionDetailComponent
+    SubscriptionDetailComponent,
+    SignupComponent,
+    PassRecoveryComponent
+
   ],
   imports: [
     BrowserModule,
@@ -40,11 +47,15 @@ import { SubscriptionDetailComponent } from './components/subscription-detail/su
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
+    AppMaterialModule,
     TableModule,
     HttpClientModule,
     InputSwitchModule,
     ButtonModule,
-    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
+    BrowserAnimationsModule
   ],
   providers: [BookService],
   bootstrap: [AppComponent]
