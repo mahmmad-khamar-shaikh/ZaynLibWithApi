@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { BookService } from 'src/app/services/book.service';
+import { FormControl } from '@angular/forms';
+import { MatBottomSheetConfig } from '@angular/material/bottom-sheet';
+import { MatTableDataSource } from '@angular/material/table';
 import { IBook } from 'src/app/types/book.interfacce';
-import { Observable } from 'rxjs';
 
+import {BookService} from '../../services/book.service';
+const defaultConfig = new MatBottomSheetConfig();
 @Component({
   selector: 'app-book-list',
   templateUrl: './book-list.component.html',
@@ -10,21 +13,39 @@ import { Observable } from 'rxjs';
 })
 export class BookListComponent implements OnInit {
 
-  public bookList$: Observable<IBook[]>;
-  cols: any[];
+  public myControl = new FormControl();
+  options: string[] = ['One', 'Two', 'Three'];
+  displayedColumns: string[] = ['Title', 'IsAvailable', 'View'];
+  dataSource: MatTableDataSource<IBook>;
+  expandedElement: IBook;
+  bookCollection: IBook[];
 
-  constructor(private bookService: BookService) {
-    this.cols = [
-      { field: 'Title', header: 'Title', width : '63%' },
-      { field: 'IsAvailable', header: 'Available', width : '22%' },
-      { field: 'Id', header: 'Detail', width : '16%' }
-    ];
-  }
+  config: MatBottomSheetConfig = {
+    hasBackdrop: defaultConfig.hasBackdrop,
+    disableClose: true,
+    backdropClass: defaultConfig.backdropClass,
+    direction: 'ltr'
+  };
+  constructor(private bookService : BookService) { }
 
   ngOnInit() {
-    this.bookList$ = this.bookService.loadBooks();
-  }
+    this.bookService.loadBooks().subscribe(data => {
+      this.bookCollection = data;
+      this.dataSource = new MatTableDataSource(this.bookCollection);
+    });
 
+  }
+  applyFilter(filterValue: string) {
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+  onChange(event, rowIdentifier) {
+    this.openBottomSheet(rowIdentifier.Id);
+  }
+  openBottomSheet(rowIdentifier: any): void {
+
+    this.config.data = rowIdentifier;
+    // this.bottomSheet.open(BookAllocationBottomSheetComponent, this.config);
+  }
 
 
 }

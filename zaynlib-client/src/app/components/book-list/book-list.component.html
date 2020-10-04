@@ -1,34 +1,33 @@
-<div class="container">
-    <p-table #dt [columns]="cols" [value]="bookList$ |async" [scrollable]="true">
-        <ng-template pTemplate="caption">
-            <div style="text-align: right">
-                <i class="pi pi-search" style="margin:4px 4px 0 0"></i>
-                <input type="text" pInputText size="30" placeholder="Global Filter" (input)="dt.filterGlobal($event.target.value, 'contains')" style="width:auto">
-            </div>
-        </ng-template>
-        <ng-template pTemplate="header" let-columns>
-            <tr>
-                <th *ngFor="let col of columns" [ngStyle]="{'width': col.width }">
-                    {{col.header}}
-                </th>
-            </tr>
-        </ng-template>
-        <ng-template pTemplate="body" let-rowData let-columns="columns">
-            <tr [pSelectableRow]="rowData">
-                <td *ngFor="let col of columns" [ngStyle]="{'width': col.width }">
-                    <div [ngSwitch]="col.field">
-                        <div *ngSwitchCase="'Title'">
-                            {{rowData[col.field]}}
-                        </div>
-                        <div>
-                            <p-inputSwitch *ngSwitchCase="'IsAvailable'" [(ngModel)]="rowData[col.field]"></p-inputSwitch>
-                        </div>
+<div class="col-md-12" style="padding-top:10px;padding-left: 5px;padding-right: 5px;">
+    <mat-form-field style="width:100%">
+        <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+    </mat-form-field>
 
-                        <button [routerLink]="['/dashboard/book',rowData[col.field]]" *ngSwitchDefault pButton type="button" class="btn btn-outline-info"></button>
-                    </div>
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" width="100%" multiTemplateDataRows>
+        <!-- Title Column -->
+        <ng-container matColumnDef="Title">
+            <th mat-header-cell *matHeaderCellDef> Title </th>
+            <td mat-cell *matCellDef="let element"> {{element.Title}} </td>
+        </ng-container>
 
-                </td>
-            </tr>
-        </ng-template>
-    </p-table>
+        <!-- Availability  Column -->
+        <ng-container matColumnDef="IsAvailable">
+            <th mat-header-cell *matHeaderCellDef> Available </th>
+            <td mat-cell *matCellDef="let element">
+                <mat-slide-toggle class="example-margin" color="green" [(ngModel)]="element.IsAvailable" (change)="onChange($event,element)" [disabled]="!element.IsAvailable">
+                </mat-slide-toggle>
+            </td>
+        </ng-container>
+        <ng-container matColumnDef="View">
+            <th mat-header-cell *matHeaderCellDef> View </th>
+            <td mat-cell *matCellDef="let element">
+                <button mat-raised-button class="gridButton" color="primary">
+          <a [routerLink]="['/book',element.Id]" style="color:white" routerLinkActive="router-link-active">view</a>
+        </button>
+            </td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let element; columns: displayedColumns;" style="cursor: pointer" class="example-element-row" [class.example-expanded-row]="expandedElement === element" (click)="expandedElement = element"></tr>
+        <!--  <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="example-detail-row"></tr> -->
+    </table>
 </div>
