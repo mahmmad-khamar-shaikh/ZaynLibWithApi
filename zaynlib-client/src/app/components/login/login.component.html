@@ -15,7 +15,7 @@
                         Please inform your password
                     </mat-error>
                 </mat-form-field>
-                <button mat-raised-button color="primary" (click)="onSubmit()">Login</button>
+                <button mat-raised-button color="primary" (click)="login()">Login</button>
 
                 <mat-error *ngIf="isError">
                     {{customErrorMessage}}

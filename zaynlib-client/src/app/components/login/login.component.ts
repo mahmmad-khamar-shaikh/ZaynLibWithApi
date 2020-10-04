@@ -35,12 +35,12 @@ export class LoginComponent implements OnInit {
     );
   }
   login() {
-    console.log(this.loginFormGroup.get('userName').value);
-    console.log(this.loginFormGroup.get('password').value);
-    this.loginService.User = {
-      email: this.loginFormGroup.get('userName').value,
-      id: 1
-    };
+    // console.log(this.loginFormGroup.get('userName').value);
+    // console.log(this.loginFormGroup.get('password').value);
+    // this.loginService.User = {
+    //   email: this.loginFormGroup.get('userName').value,
+    //   id: 1
+    // };
     this.router.navigate(['/dashboard']);
   }
   onSubmit() {
