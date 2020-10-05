@@ -8,6 +8,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatTableModule, MatBottomSheetModule, MatDividerModule, MatSlideToggleModule } from '@angular/material';
+import {MatIconModule} from '@angular/material/icon';
 
 @NgModule({
   exports: [
@@ -23,6 +24,7 @@ import { MatTableModule, MatBottomSheetModule, MatDividerModule, MatSlideToggleM
     MatDividerModule,
     MatInputModule,
     MatSlideToggleModule,
+    MatIconModule
   ]
 })
 export class AppMaterialModule { }
