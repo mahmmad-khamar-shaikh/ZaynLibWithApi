@@ -7,8 +7,15 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
-import { MatTableModule, MatBottomSheetModule, MatDividerModule, MatSlideToggleModule, MatCheckboxModule } from '@angular/material';
-import {MatIconModule} from '@angular/material/icon';
+import {
+  MatTableModule,
+  MatBottomSheetModule,
+  MatDividerModule,
+  MatSlideToggleModule,
+  MatCheckboxModule,
+  MatSelectModule
+} from '@angular/material';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   exports: [
@@ -25,7 +32,8 @@ import {MatIconModule} from '@angular/material/icon';
     MatInputModule,
     MatSlideToggleModule,
     MatIconModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatSelectModule
   ]
 })
 export class AppMaterialModule { }

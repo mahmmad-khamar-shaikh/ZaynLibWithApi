@@ -16,3 +16,8 @@ export class BookAllocationType {
   bookRefToBeAllocated: number;
 
 }
+
+export interface ISelectionOption {
+  value: string;
+  label: string;
+}

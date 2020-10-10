@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Book } from './book';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
+import { ISelectionOption } from '../../types/customTypes';
 
 @Component({
   selector: 'app-add-book',
@@ -13,12 +14,14 @@ export class AddBookComponent implements OnInit {
   formGroup: FormGroup;
   titleAlert = 'This field is required';
   post: any = '';
+  bookCategory: ISelectionOption[];
 
   constructor(private formBuilder: FormBuilder) { }
 
   ngOnInit() {
     this.createForm();
-   // this.setChangeValidate();
+    // this.setChangeValidate();
+    this.setBookCategory();
   }
 
   createForm() {
@@ -30,8 +33,16 @@ export class AddBookComponent implements OnInit {
       category: [null, Validators.required],
       author: [null, Validators.required],
       isAvailable: [null]
-     // email: [null, [Validators.required, Validators.pattern(emailregex)], this.checkInUseEmail],
+      // email: [null, [Validators.required, Validators.pattern(emailregex)], this.checkInUseEmail],
     });
+  }
+  setBookCategory() {
+
+    this.bookCategory = [
+      { label: 'Programming', value: 'programming' },
+      { label: 'Science', value: 'science' },
+      { label: 'Cloud Computing', value: 'cloud_computing' }];
+
   }
 
   setChangeValidate() {

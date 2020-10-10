@@ -12,11 +12,14 @@
             </mat-error>
         </mat-form-field>
 
-        <mat-form-field class="form-element">
-            <input matInput placeholder="category" formControlName="category">
-            <mat-error *ngIf="!formGroup.controls['category'].valid && formGroup.controls['category'].touched">
-                {{ titleAlert }}
-            </mat-error>
+        <mat-form-field appearance="fill">
+            <mat-label>Book Category</mat-label>
+            <mat-select>
+                <mat-option>None</mat-option>
+                <mat-option *ngFor="let category of bookCategory" [value]="category.value">
+                    {{category.label}}
+                </mat-option>
+            </mat-select>
         </mat-form-field>
 
         <mat-form-field class="form-element">
