@@ -7,7 +7,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
-import { MatTableModule, MatBottomSheetModule, MatDividerModule, MatSlideToggleModule } from '@angular/material';
+import { MatTableModule, MatBottomSheetModule, MatDividerModule, MatSlideToggleModule, MatCheckboxModule } from '@angular/material';
 import {MatIconModule} from '@angular/material/icon';
 
 @NgModule({
@@ -24,7 +24,8 @@ import {MatIconModule} from '@angular/material/icon';
     MatDividerModule,
     MatInputModule,
     MatSlideToggleModule,
-    MatIconModule
+    MatIconModule,
+    MatCheckboxModule
   ]
 })
 export class AppMaterialModule { }

@@ -4,7 +4,7 @@ import { MatBottomSheetConfig } from '@angular/material/bottom-sheet';
 import { MatTableDataSource } from '@angular/material/table';
 import { IBook } from 'src/app/types/book.interfacce';
 
-import {BookService} from '../../services/book.service';
+import { BookService } from '../../services/book.service';
 const defaultConfig = new MatBottomSheetConfig();
 @Component({
   selector: 'app-book-list',
@@ -26,7 +26,7 @@ export class BookListComponent implements OnInit {
     backdropClass: defaultConfig.backdropClass,
     direction: 'ltr'
   };
-  constructor(private bookService : BookService) { }
+  constructor(private bookService: BookService) { }
 
   ngOnInit() {
     this.bookService.loadBooks().subscribe(data => {

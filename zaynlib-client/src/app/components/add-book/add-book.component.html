@@ -1,49 +1,53 @@
-<div class="card" style="margin-top: 10px; ">
-    <div class="card-header">
-        Book Detail! {{bookForm.valid }}
-    </div>
+<mat-toolbar color="primary">
+    <span class="fill-remaining-space">Add Book</span>
+</mat-toolbar>
 
-    <div class="card-body">
-        <form class="justify-content-center" [formGroup]="bookForm">
-            <div class="form-group row">
-                <label for="lblBookTitle" class="col-sm-2 col-form-label col-xs-1">Title</label>
-                <div class="col-sm-6 col-xs-4">
-                    <input type="text" class="form-control" formControlName="title" id="txtTitle" placeholder="Tile" [ngClass]="{'is-invalid' : (bookForm.get('title').touched || bookForm.get('title').dirty) && !bookForm.get('title').valid }">
-                </div>
-            </div>
-            <div class="form-group row">
-                <label for="lblCategory" class="col-sm-2 col-form-label  col-xs-1">category</label>
-                <div class="col-sm-4 col-xs-2">
-                    <input type="text" class="form-control" id="txtCategory" formControlName="category" placeholder="Category">
-                </div>
-            </div>
-            <div class="form-group row">
-                <label for="lblAuthor" class="col-sm-2 col-form-label  col-xs-1">Author</label>
-                <div class="col-sm-4 col-xs-2">
-                    <input type="text" class="form-control" formControlName="author" id="txtAuthor" placeholder="Author">
-                </div>
-            </div>
-            <div class="form-group row ">
-                <div class="col-sm-2 col-xs-1"></div>
-                <div class="col-sm-6 form-check col-xs-2">
-                    <div class="custom-control custom-switch">
-                        <input type="checkbox" class="custom-control-input" formControlName="isAvailable" id="customSwitch1">
-                        <label class="custom-control-label" for="customSwitch1">Is Available</label>
-                    </div>
+<div class="container" *ngIf="!post; else forminfo" novalidate>
+    <form [formGroup]="formGroup" (ngSubmit)="onSubmit(formGroup.value)" class="form">
 
-                </div>
+        <mat-form-field class="form-element">
+            <input matInput placeholder="Title" formControlName="title">
+            <mat-error *ngIf="!formGroup.controls['title'].valid && formGroup.controls['title'].touched">
+                {{ titleAlert }}
+            </mat-error>
+        </mat-form-field>
 
+        <mat-form-field class="form-element">
+            <input matInput placeholder="category" formControlName="category">
+            <mat-error *ngIf="!formGroup.controls['category'].valid && formGroup.controls['category'].touched">
+                {{ titleAlert }}
+            </mat-error>
+        </mat-form-field>
 
-            </div>
+        <mat-form-field class="form-element">
+            <textarea matInput placeholder="Description" matTextareaAutosize matAutosizeMinRows="2" matAutosizeMaxRows="20" formControlName="description"></textarea>
+            <mat-error *ngIf="!formGroup.controls['description'].valid && formGroup.controls['description'].touched">
+                Required field, must be between 5 and 500 characters.
+            </mat-error>
+        </mat-form-field>
 
-            <div class="form-group row">
-                <div class="col-sm-12 ">
-                    <button class="btn btn-primary btn-sm mr-1" type="submit" style="width:80px" [title]="bookForm.valid ? 'Save your entered data' : 'Disabled until the form data is valid'" [disabled]="!bookForm.valid" (click)="addBook()">Add
-          </button>
-                    <button type="submit" class="btn btn-info btn-sm mr-1">Update</button>
-                    <button type="reset" class="btn btn-secondary btn-sm mr-1">Cancel</button>
-                </div>
-            </div>
-        </form>
-    </div>
+        <mat-form-field class="form-element">
+            <input matInput placeholder="author" formControlName="author">
+            <!-- <mat-hint>Select Author from List of authors</mat-hint> -->
+            <mat-error *ngIf="!formGroup.controls['author'].valid && formGroup.controls['author'].touched">
+                {{ titleAlert }}
+            </mat-error>
+        </mat-form-field>
+
+        <div class="form-element">
+            <mat-slide-toggle formControlName="isAvailable">Is Book Available? </mat-slide-toggle>
+        </div>
+
+        <div class="form-element">
+            <button mat-raised-button color="primary" type="submit" class="button" [disabled]="!formGroup.valid">Add Book</button>
+            <button mat-stroked-button color="primary" type="reset" class="button">Cancel</button>
+        </div>
+
+    </form>
 </div>
+
+<ng-template #forminfo>
+    <div class="container">
+        {{ post | json }}
+    </div>
+</ng-template>
