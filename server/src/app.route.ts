@@ -11,13 +11,13 @@ export class AppRoutes {
 
         const _connectionPool = await new _sql.ConnectionPool(config);
         _connectionPool.connect();
-        _connectionPool.request().query("select * from books").then((books) => {
-          console.log('books arrived');
+        _connectionPool.request().query("select * from books").then((books:any) => {
+          console.log('books arrived',books);
         },
-          (rej) => {
-            console.log('rejected', rej);
+          (res:any) => {
+            console.log('rejected', res);
           }
-        ).catch(err => {
+        ).catch((err:any) => {
           console.log('érror0 ', err);
         });
 
